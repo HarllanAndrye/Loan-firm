@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title">Código: {{loan.loanCode}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div *ngIf="loan.canceledLoan" class="text-center">
+        Empréstimo <strong>cancelado</strong> em <strong>{{loan.dateCanceledLoan | date:'shortDate'}}</strong>.
+        <br/>
+        <br/>
+    </div>
+    <div>
+        <div class="col-6">Cliente: <strong>{{email}}</strong></div>
+        <div class="col-6">Renda: <strong>{{income | currency:'BRL':true}}</strong></div>
+    </div>
+    <br/>
+    <div class="text-center">
+        <p>Valor solicitado: {{loan.loanValue | currency:'BRL':true}}</p>
+        <p>Quantidade de parcelas: {{loan.quantityOfPayment}}</p>
+        <p>Primeira parcela para {{loan.fisrtDateToPayment | date:'shortDate'}}</p>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="cancelLoan(loan.loanCode)">Cancelar empréstimo</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Sair</button>
+</div>

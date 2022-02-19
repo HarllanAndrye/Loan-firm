@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-center mt-5">
+    <div *ngFor="let loan of loans" class="card border-primary mb-3 mx-3" style="max-width: 18rem;">
+        <div class="card-header">
+            Código: <strong>{{loan.loanCode}}</strong>
+            <span *ngIf="loan.canceledLoan" class="badge badge-pill badge-danger float-right">Cancelado</span>
+        </div>
+        <div class="card-body text-center">
+            <h5 class="card-title">Valor solicitado: {{loan.loanValue | currency:'BRL':true}}</h5>
+            <p class="card-text">Quantidade de parcelas: {{loan.quantityOfPayment}}</p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-primary mb-3" style="width: 50%;" (click)="openModal(loan)">
+                Detalhes
+            </button>
+        </div>
+        
+    </div>
+</div>
